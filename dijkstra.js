@@ -152,7 +152,7 @@ function shortestPath(previous, start, target) {
   const path = [];
   let current = target;
 
-  while (current != null) {
+  while (current !== null && current !== undefined) {
     path.push(current);
     if (current === start) {
       break;
