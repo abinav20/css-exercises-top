@@ -121,7 +121,7 @@ function dijkstra(graph, start) {
     }
 
     const { node: current, priority: currentDistance } = currentEntry;
-    if (visited.has(current) || currentDistance !== distances[current]) {
+    if (visited.has(current)) {
       continue;
     }
 
@@ -153,14 +153,18 @@ function shortestPath(previous, start, target) {
   let current = target;
 
   while (current !== null) {
-    path.unshift(current);
+    path.push(current);
     if (current === start) {
-      return path;
+      break;
     }
     current = previous[current];
   }
 
-  return [];
+  if (path[path.length - 1] !== start) {
+    return [];
+  }
+
+  return path.reverse();
 }
 
 if (require.main === module) {
