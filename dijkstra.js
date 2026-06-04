@@ -149,10 +149,17 @@ function dijkstra(graph, start) {
  * @returns {string[]}
  */
 function shortestPath(previous, start, target) {
+  if (
+    !Object.prototype.hasOwnProperty.call(previous, start) ||
+    !Object.prototype.hasOwnProperty.call(previous, target)
+  ) {
+    return [];
+  }
+
   const path = [];
   let current = target;
 
-  while (current !== null && current !== undefined) {
+  while (current !== null) {
     path.push(current);
     if (current === start) {
       break;
