@@ -89,7 +89,7 @@ function dijkstra(graph, start) {
       nodes.add(neighbor);
 
       if (!Number.isFinite(weight)) {
-        throw new TypeError(`Weight for edge "${node}" -> "${neighbor}" must be a number.`);
+        throw new TypeError(`Weight for edge "${node}" -> "${neighbor}" must be a finite number.`);
       }
       if (weight < 0) {
         throw new RangeError(`Weight for edge "${node}" -> "${neighbor}" must be non-negative.`);
@@ -152,7 +152,7 @@ function shortestPath(previous, start, target) {
   const path = [];
   let current = target;
 
-  while (current !== null) {
+  while (current != null) {
     path.push(current);
     if (current === start) {
       break;
